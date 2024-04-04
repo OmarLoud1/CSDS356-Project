@@ -123,17 +123,5 @@ print("Plaintext dot product result:\n", plaintext_dot_product)
 # print("Encrypted dot product result (decoded):\n", decoded_dot_product)
 print("Encrypted dot product result (decoded):\n", np.sum(decoded_dot_product))
 
-# Generate encrypted similarity matrix
-encrypted_similarity_matrix = matrix_multiply(encrypted_vector1, encrypted_vector2, keys, BLOCK_SIZE, SCALING_FACTOR)
 
-# Decrypt and decode the similarity matrix for demonstration
-decrypted_similarity_matrix = keys['decryptor'].decrypt(encrypted_similarity_matrix)
-decoded_similarity_matrix = [keys['encoder'].decode(row) for row in decrypted_similarity_matrix]
-
-print("Encrypted similarity matrix (decoded):\n", decoded_similarity_matrix)
-
-# Use the similarity matrix to make predictions
-predicted_ratings_encrypted = np.dot(decoded_similarity_matrix, user_item_ratings)
-
-print("Predicted ratings using encrypted similarity matrix:\n", predicted_ratings_encrypted)
 
